@@ -25,6 +25,7 @@ class LiabilitiesController < ApplicationController
   # POST /liabilities
   # POST /liabilities.json
   def create
+    binding.pry
     @liability = Liability.new(liability_params)
 
     respond_to do |format|
@@ -72,6 +73,6 @@ class LiabilitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def liability_params
       params.require(:liability).permit(:item, :property, :money,
-        person_attributes: [:name], heirship_attributes: [:transfer_date])
+        heirships_attributes: [ :transfer_date, { person: :name } ])
     end
   end
