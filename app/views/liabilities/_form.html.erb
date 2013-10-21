@@ -1,0 +1,44 @@
+<%= form_for(@liability) do |f| %>
+<% if @liability.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@liability.errors.count, "error") %> prohibited this liability from being saved:</h2>
+
+  <ul>
+    <% @liability.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<fieldset id="liability-meta">
+  <ol>
+    <li class="control-group">
+      <%= f.label :item, "Item to be transferred:", class: "control-label" %>
+      <div class="controls"><%= f.text_field :item, rows: 5 %></div>
+    </li>
+    <li class="control-group">
+      <%= f.label :property, "Property to be transferred:", class: "control-label" %>
+      <div class="controls"><%= f.text_field :property, rows: 5 %></div>
+    </li>
+    <li class="control-group">
+      <%= f.label :money, "Money to be transferred:", class: "control-group" %>
+      <div class="controls">$<%= f.text_field :money %></div>
+    </li>
+  </ol>
+</fieldset>
+
+<fieldset id="liability-people">
+  <ol>
+    <%= f.fields_for :heirships do |heirship| %>
+    <%= render 'heirship_fields', f: heirship %>
+    <% end %>
+    <%= link_to_add_association 'Add date transferred', f, :heirships,
+    'data-association-insert' => "#liability-people ol",
+    'data-association-insertion-method' => "append",
+    :wrap_object => Proc.new {|heirship| heirship.build_person; heirship } %>
+  </ol>
+</fieldset>
+
+<%= f.submit %>
+<% end %>

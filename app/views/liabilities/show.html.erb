@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @liability.item %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @liability.property %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @liability.money %>
+</p>
+
+<%= link_to 'Edit', edit_liability_path(@liability) %> |
+<%= link_to 'Back', liabilities_path %>
