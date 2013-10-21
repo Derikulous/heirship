@@ -6,22 +6,24 @@
       <th>Item</th>
       <th>Property</th>
       <th>Money</th>
+      <th>Person transferred to:</th>
       <th>Date Transferred</th>
-      <th>to:</th>
     </tr>
   </thead>
 
   <tbody>
     <% @liabilities.each do |liability| %>
-      <tr>
-        <td><%= liability.item %></td>
-        <td><%= liability.property %></td>
-        <td><%= liability.money %></td>
-        <td><%=  %></td>
-        <td></td>
-        <td><%= link_to 'Edit', edit_liability_path(liability) %></td>
-        <td><%= link_to 'Destroy', liability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= liability.item %></td>
+      <td><%= liability.property %></td>
+      <td><%= liability.money %></td>
+      <td><%= liability.people.each do |person| %>
+        <li><%= person.name %></li>
+        <% end %></td>
+      <td><%= liability.heirships %></td>
+      <td><%= link_to 'Edit', edit_liability_path(liability) %></td>
+      <td><%= link_to 'Destroy', liability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

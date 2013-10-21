@@ -3,21 +3,26 @@
 <table>
   <thead>
     <tr>
-      <th>Transfer date</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Item</th>
+      <th>Property</th>
+      <th>Money</th>
+      <th>Person transferred to:</th>
+      <th>Date Transferred</th>
     </tr>
   </thead>
 
   <tbody>
     <% @heirships.each do |heirship| %>
-      <tr>
-        <td><%= heirship.transfer_date %></td>
-        <td><%= link_to 'Show', heirship %></td>
-        <td><%= link_to 'Edit', edit_heirship_path(heirship) %></td>
-        <td><%= link_to 'Destroy', heirship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= heirship.liability %></td>
+      <td><%= heirship.liability %></td>
+      <td><%= heirship.liability %></td>
+      <td><%= heirship.person %></td>
+      <td><%= heirship.transfer_date %></td>
+      <td><%= link_to 'Show', heirship %></td>
+      <td><%= link_to 'Edit', edit_heirship_path(heirship) %></td>
+      <td><%= link_to 'Destroy', heirship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

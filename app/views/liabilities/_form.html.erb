@@ -33,7 +33,7 @@
     <%= f.fields_for :heirships do |heirship| %>
     <%= render 'heirship_fields', f: heirship %>
     <% end %>
-    <%= link_to_add_association 'Add date transferred', f, :heirships,
+    <%= link_to_add_association 'Add date to be transferred and person', f, :heirships,
     'data-association-insert' => "#liability-people ol",
     'data-association-insertion-method' => "append",
     :wrap_object => Proc.new {|heirship| heirship.build_person; heirship } %>

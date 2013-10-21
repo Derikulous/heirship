@@ -69,6 +69,8 @@ class HeirshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def heirship_params
-      params.require(:heirship).permit(:transfer_date)
+      params.require(:heirship).permit(:transfer_date, liability_attributes: [:item, :money, :property],
+        person_attributes: [:name])
     end
 end
+

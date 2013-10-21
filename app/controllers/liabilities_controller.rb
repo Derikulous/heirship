@@ -10,6 +10,7 @@ class LiabilitiesController < ApplicationController
   # GET /liabilities/1
   # GET /liabilities/1.json
   def show
+    @liability = Liability.find(params[:id])
   end
 
   # GET /liabilities/new
@@ -70,6 +71,7 @@ class LiabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def liability_params
-      params.require(:liability).permit(:item, :property, :money)
+      params.require(:liability).permit(:item, :property, :money,
+        person_attributes: [:name], heirship_attributes: [:transfer_date])
     end
-end
+  end
