@@ -15,16 +15,32 @@
   <%= f.label :transfer_date %><br>
   <%= f.text_field :transfer_date %>
 </div>
+<p>Person</p>
+<%= f.fields_for :people do |person_form| %>
 <div class="field">
-  <%= f.label :liability_id %><br>
-  <%= f.text_field :liability_id %>
-</div>
-<div class="field">
-  <%= f.label :person_id %><br>
-  <%= f.text_field :person_id %>
-</div>
-<div class="actions">
-  <%= f.submit %>
+  <%= person_form.label :name %>
+  <%= person_form.text_field :name %>
 </div>
 <% end %>
+<div>
+  <%= f.fields_for :liability do |liability_form| %>
+  <div class="field">
+    <%= liability_form.label :item %>
+    <%= liability_form.text_field :item %>
+  </div>
+  <div class="field">
+    <%= liability_form.label :property %>
+    <%= liability_form.text_field :property %>
+  </div>
+  <div class="field">
+    <%= liability_form.label :money %>
+    $<%= liability_form.text_field :money %>
+  </div>
+  <% end %>
+  <div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <% end %>
 

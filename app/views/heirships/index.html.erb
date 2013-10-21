@@ -14,10 +14,19 @@
   <tbody>
     <% @heirships.each do |heirship| %>
     <tr>
-      <td><%= heirship.liability %></td>
-      <td><%= heirship.liability %></td>
-      <td><%= heirship.liability %></td>
-      <td><%= heirship.person %></td>
+      <td><% if heirship.liability.nil? %>
+      No liabilities
+      <% else %>
+        <%= heirship.liability.item %>
+        <%= heirship.liability.property %>
+        <%= heirship.liability.money %>
+      <% end %>
+      </td>
+      <% if heirship.person.nil? %>
+      No heir.
+      <% else %>
+      <td><%= heirship.person.name %></td>
+      <% end %>
       <td><%= heirship.transfer_date %></td>
       <td><%= link_to 'Show', heirship %></td>
       <td><%= link_to 'Edit', edit_heirship_path(heirship) %></td>
